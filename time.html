@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #timerInput {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        #timerDisplay {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #logo {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <img id="logo" src="타이머이미지.jpg" alt="타이머이미지">
+    <div id="timerInput">
+        <label for="hours">시간:</label>
+        <input type="number" id="hours" min="0" value="0"> 
+        <label for="minutes">분:</label>
+        <input type="number" id="minutes" min="0" value="0">
+        <label for="seconds">초:</label>
+        <input type="number" id="seconds" min="0" value="0">
+    </div>
+
+    <div id="timerDisplay">00:00:00</div>
+
+    <div id="buttons">
+        <button onclick="startTimer()">START</button>
+        <button onclick="stopTimer()">STOP</button>
+        <button onclick="resetTimer()">RESET</button>
+    </div>
+
+    <script>
+        var timerInterval;
+        var totalSeconds = 0;
+        var isTimerRunning = false;
+        var remainingSeconds = 0;
+
+        function startTimer() {
+            var hours = parseInt(document.getElementById('hours').value) || 0;
+            var minutes = parseInt(document.getElementById('minutes').value) || 0;
+            var seconds = parseInt(document.getElementById('seconds').value) || 0;
+
+            if (hours === 0 && minutes === 0 && seconds === 0) {
+                alert('Enter the time!');
+                return;
+            }
+
+            if (!isTimerRunning) {
+                totalSeconds = remainingSeconds || hours * 3600 + minutes * 60 + seconds;
+                isTimerRunning = true;
+
+                timerInterval = setInterval(function () {
+                    if (totalSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        alert('Timer ends!');
+                        return;
+                    }
+                    totalSeconds--;
+                    updateDisplay();
+                }, 1000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            remainingSeconds = totalSeconds;
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            totalSeconds = 0;
+            remainingSeconds = 0;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            var hours = Math.floor(totalSeconds / 3600);
+            var minutes = Math.floor((totalSeconds % 3600) / 60);
+            var seconds = totalSeconds % 60;
+
+            document.getElementById('timerDisplay').innerHTML = `${hours}:${minutes}:${seconds}`;
+        }
+    </script>
+</body>
+</html>

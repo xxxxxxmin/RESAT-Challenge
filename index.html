@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 추가하기 버튼에 배경색 및 여백 적용 */
+        #add-task-box button {
+            background-color:#059651 ;
+            color: #F2F3F0;
+            margin-left: 10px; /* 원하는 여백 크기로 변경 */
+        }
+          /* 할 일 목록 왼쪽 정렬 추가 */
+          #taskList {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>To-Do List</h1>
+
+        <div id="add-task-box">
+            <label for="task">할 일 작성:</label>
+            <input type="text" id="task" placeholder="할 일을 입력하세요">
+            
+            <label for="priority">우선순위:</label>
+            <select id="priority">
+                <option value="high">아주 높음</option>
+                <option value="medium">높음</option>
+                <option value="low">보통</option>
+                <option value="very-low">낮음</option>
+            </select>
+
+            <button onclick="addTask()">추가하기</button>
+        </div>
+
+        <h2>할 일 목록</h2>
+        <div>
+            <label class="filter-box"><input type="radio" name="filter" onclick="showAll()">전체</label>
+            <label class="filter-box"><input type="radio" name="filter" onclick="showCompleted()">해결</label>
+            <label class="filter-box"><input type="radio" name="filter" onclick="showUncompleted()">미해결</label>
+            <label class="sort-box"><input type="checkbox" onclick="toggleSort()">우선순위 정렬</label>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
+

@@ -48,10 +48,10 @@ li {
     color: #888;
 }
 
-.priority-high { color: OliveDrab; }
-.priority-medium { color: darkgreen; }
-.priority-low { color: YellowGreen; }
-.priority-very-low { color: DarkSeaGreen; }
+.priority-high { color: black; }
+.priority-medium { color: black; }
+.priority-low { color: black; }
+.priority-very-low { color: black; }
 /* 네모 박스 스타일 추가 */
 .filter-box {
     display: inline-block;

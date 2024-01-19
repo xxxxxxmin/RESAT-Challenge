@@ -1,0 +1,47 @@
+/* Reset some default styles */
+body, h1, h2, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply basic styles to the header */
+header {
+    background-color: #00c73c;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style the logo */
+.logo img {
+    height: 30px;
+}
+
+/* Style the navigation menu */
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Style the user actions */
+.user-actions a {
+    margin-left: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Apply basic styles to the main content area */
+section {
+    padding: 20px;
+}

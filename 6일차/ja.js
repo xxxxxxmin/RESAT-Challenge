@@ -48,3 +48,14 @@ function updateSlider() {
         }
     });
 }
+
+// 2초 간격으로 자동 슬라이드
+setInterval(() => {
+    if (currentIndex < slider.childElementCount - 1) {
+        currentIndex++;
+    } else {
+        currentIndex = 0;
+    }
+    updateSlider();
+}, 2000);
+
